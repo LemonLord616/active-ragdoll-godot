@@ -2,11 +2,14 @@
 
 [ext_resource type="Material" uid="uid://cmdunvcgrym8m" path="res://resources/materials/prototype_orange.tres" id="1_clw8d"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_trceg"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_lsyt0"]
 
 [node name="Box" type="RigidBody3D" unique_id=4753366]
 collision_layer = 8
 collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_trceg")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1762203215]
 material = ExtResource("1_clw8d")

@@ -67,8 +67,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.013269984, 0.013269984)
-shader_parameter/cirrus_position2 = Vector2(0.013269984, 0.013269984)
+shader_parameter/cirrus_position1 = Vector2(0.032809444, 0.032809444)
+shader_parameter/cirrus_position2 = Vector2(0.032809444, 0.032809444)
 shader_parameter/cirrus_texture = ExtResource("8_muem4")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -78,7 +78,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(0.066349894, 0.066349894)
+shader_parameter/cumulus_position = Vector2(0.16405027, 0.16405027)
 shader_parameter/cumulus_texture = ExtResource("9_dp3eg")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -108,29 +108,38 @@ tonemap_white = 6.0
 [node name="Node3D" type="Node3D" unique_id=512579956]
 
 [node name="FpsPlayer" parent="." unique_id=83343701 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-walk_speed = 4.698
-run_speed = 10.76
 
 [node name="boxes" type="Node3D" parent="." unique_id=1162643227]
 
 [node name="Box" parent="boxes" unique_id=4753366 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 9.5, 0)
+collision_mask = 11
+mass = 1000.0
 
 [node name="Box2" parent="boxes" unique_id=1167725161 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 9.5, 2)
+collision_mask = 11
+mass = 1000.0
 
 [node name="Box3" parent="boxes" unique_id=408810014 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 9.5, 5)
+collision_mask = 11
+mass = 1000.0
 
 [node name="Box4" parent="boxes" unique_id=2089424097 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 11, 4)
+collision_mask = 11
+mass = 1000.0
 
 [node name="Box5" parent="boxes" unique_id=354562732 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 9.5, 3.5)
+collision_mask = 11
+mass = 1000.0
 
 [node name="Box6" parent="boxes" unique_id=6690257 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 11.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 11.5, 0)
+collision_mask = 11
+mass = 1000.0
 
 [node name="csg" type="Node3D" parent="." unique_id=923048358]
 

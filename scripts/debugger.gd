@@ -6,4 +6,5 @@ extends Node
 
 
 func _physics_process(delta: float) -> void:
-	print(node.global_position)
+	pass
+	# print(node.global_position)

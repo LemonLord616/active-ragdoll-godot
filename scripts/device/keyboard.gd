@@ -4,7 +4,8 @@ class_name Keyboard
 var _mouse_delta := Vector2.ZERO
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	return
+	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
 	if event.device == event.DEVICE_ID_KEYBOARD:
