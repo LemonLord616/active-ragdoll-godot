@@ -36,5 +36,4 @@ func _exit() -> void:
 	player.device.jump.disconnect(_on_jump)
 
 func _on_jump() -> void:
-	pass
-	# player.apply_impulse(player.jump_speed * player.mass * Vector3.UP)
+	player.motor.velocity.y += player.jump_speed

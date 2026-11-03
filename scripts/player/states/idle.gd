@@ -8,5 +8,4 @@ func _setup() -> void:
 	player = agent as Player
 
 func _enter() -> void:
-	player.anim.play(&"Idle")
-	# player.linear_velocity = Vector3.ZERO
+	player.anim_player.play(&"Idle")

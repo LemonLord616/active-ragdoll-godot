@@ -2,7 +2,6 @@ extends LimboHSM
 
 
 @export var player: Player
-@export var floor_detect: Area3D
 @export var on_ground: LimboState
 @export var in_air: LimboState
 
@@ -15,7 +14,7 @@ func _ready() -> void:
 
 
 func _update(_delta: float) -> void:
-	if floor_detect.has_overlapping_bodies():
+	if player.motor.is_on_floor():
 		dispatch(&"to_ground")
 	else:
 		dispatch(&"to_air")

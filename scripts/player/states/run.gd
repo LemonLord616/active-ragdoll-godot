@@ -8,7 +8,8 @@ func _setup() -> void:
 	player = agent as Player
 
 func _enter() -> void:
-	player.anim.play(&"Sprint", -1, player.run_speed / player.RUN_ANIM_SPEED)
+	player.anim_player.play(&"Sprint")
+	player.motor.speed = player.run_speed
 
 func _update(_delta: float) -> void:
-	player.apply_input_vector(player.device.input_vector(), player.run_speed)
+	player.motor.set_input_vector(player.device.input_vector())
