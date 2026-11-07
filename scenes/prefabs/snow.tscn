@@ -1,0 +1,88 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="../../scripts/snow/snow.gdshader" id="1"]
+[ext_resource type="Texture2D" path="../../assets/textures/snow/Snow010A_2K-PNG_Color.png" id="2"]
+[ext_resource type="Texture2D" path="../../assets/textures/snow/Snow010A_2K-PNG_Roughness.png" id="3"]
+[ext_resource type="Shader" path="../../scripts/snow/snow_mask.gdshader" id="4"]
+[ext_resource type="Texture2D" path="../../assets/textures/snow/snow_height_noise.png" id="5"]
+[ext_resource type="Script" path="../../scripts/snow/snow_mask.gd" id="6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mask"]
+resource_local_to_scene = true
+viewport_path = NodePath("MaskViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_snow"]
+resource_local_to_scene = true
+shader = ExtResource("1")
+shader_parameter/snow_mask = SubResource("ViewportTexture_mask")
+shader_parameter/snow_max_height = 1.5
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_bottom = Color(0.7636, 0.8418, 0.92, 1)
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.5
+shader_parameter/uv_scale = 1.81
+shader_parameter/texture_albedo = ExtResource("2")
+shader_parameter/texture_roughness = ExtResource("3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_snow"]
+size = Vector2(100, 100)
+subdivide_width = 510
+subdivide_depth = 510
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_snow"]
+size = Vector3(120, 0, 120)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mask"]
+resource_local_to_scene = true
+shader = ExtResource("4")
+shader_parameter/previous_frame_texture = ExtResource("5")
+shader_parameter/depth_start_percentage = 0.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_mask"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="Environment" id="Environment_mask"]
+background_mode = 4
+
+[node name="Snow" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="SnowSurface" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("PlaneMesh_snow")
+material_override = SubResource("ShaderMaterial_snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_snow")
+
+[node name="DepthCameraAnchor" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1, 0)
+remote_path = NodePath("../MaskViewport/DepthCamera")
+update_scale = false
+
+[node name="MaskViewport" type="SubViewport" parent="." node_paths=PackedStringArray("mask_quad")]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(512, 512)
+render_target_update_mode = 4
+script = ExtResource("6")
+mask_quad = NodePath("DepthCamera/MaskQuad")
+
+[node name="DepthCamera" type="Camera3D" parent="MaskViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1, 0)
+cull_mask = 5
+environment = SubResource("Environment_mask")
+projection = 1
+current = true
+size = 100.0
+far = 2.5
+
+[node name="MaskQuad" type="MeshInstance3D" parent="MaskViewport/DepthCamera"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, -0.1)
+layers = 4
+cast_shadow = 0
+visibility_range_end = 0.5
+mesh = SubResource("QuadMesh_mask")
+material_override = SubResource("ShaderMaterial_mask")
