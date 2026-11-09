@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://jbyjjhj26pje"]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/snow.tscn" id="1_bant5"]
+[ext_resource type="PackedScene" uid="uid://ctogr3uchhrtl" path="res://scenes/prefabs/player.tscn" id="2_kdpk6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kdpk6"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_32les"]
+sky_material = SubResource("ProceduralSkyMaterial_kdpk6")
+
+[sub_resource type="Environment" id="Environment_ycy0c"]
+background_mode = 2
+sky = SubResource("Sky_32les")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_gk1io"]
+_shader_parameters = {
+&"bias_distance": null,
+&"blend_sharpness": null,
+&"depth_blur": null,
+&"distant_normal_scale": null,
+&"flat_terrain_normals": null,
+&"general_uniforms": null,
+&"ground_level": null,
+&"mipmap_bias": null,
+&"mipmaps": null,
+&"private": null,
+&"region_blend": null
+}
+show_checkered = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bant5"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+metadata/terrain3d_generated_material = true
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_kdpk6"]
+generated_type = 1
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_bant5")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_32les"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_kdpk6")])
+
+[node name="SnowTest" type="Node3D" unique_id=1051644138]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=275523526]
+environment = SubResource("Environment_ycy0c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=909334803]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=663546927]
+data_directory = "res://assets/terrain"
+material = SubResource("Terrain3DMaterial_gk1io")
+assets = SubResource("Terrain3DAssets_32les")
+displacement_sharpness = 0.5
+show_checkered = true
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Snow" parent="." unique_id=1187404071 instance=ExtResource("1_bant5")]
+mesh_resolution = 1024
+snow_max_height = 1.0
+deformation_smoothing = 0.05
+
+[node name="Player" parent="." unique_id=1982801174 instance=ExtResource("2_kdpk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.5, 0)

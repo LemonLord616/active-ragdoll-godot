@@ -135,6 +135,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 11.5, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="csg" unique_id=54787027]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+layers = 2
 use_collision = true
 collision_mask = 14
 size = Vector3(40, 0.5, 40)
@@ -223,4 +224,6 @@ dome_path = NodePath("../SkyDome")
 current_time = 12.0
 
 [node name="Snow" parent="." unique_id=15718048 instance=ExtResource("14_a8y0u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.800007, -4, -1.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.800007, 0, -1.6)
+snow_max_height = 0.6
+influence_layer = 1
