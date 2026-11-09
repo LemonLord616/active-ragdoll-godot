@@ -21,3 +21,9 @@ live. Rebaking clears tracks. Large radii are expensive (capped at 16 pixels).
 
 Node references are exported and wired in the prefab. Missing required
 references are configuration errors. Terrain3D is sampled read-only.
+
+The runtime mask pipeline captures contact once, filters horizontally, then
+filters vertically while accumulating into alternating history targets.
+Gaussian weights are cached until the smoothing radius changes. Large filters
+benefit most; tiny radii may be cheaper with fewer passes. No per-frame CPU
+image transfers are used.

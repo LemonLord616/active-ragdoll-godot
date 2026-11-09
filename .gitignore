@@ -4,3 +4,8 @@
 
 # GD-Sync API keys. Never commit these.
 addons/GD-Sync/keys.cfg
+
+
+docs/
+tests/
+gdshader_lsp_log.txt

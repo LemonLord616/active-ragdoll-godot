@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="../../scripts/snow/snow_mask.gd" id="6"]
 [ext_resource type="Script" path="../../scripts/snow/snow_field.gd" id="7"]
 
+[ext_resource type="Shader" path="res://scripts/snow/snow_filter.gdshader" id="8_filter"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_mask"]
 resource_local_to_scene = true
 viewport_path = NodePath("MaskViewport")
@@ -14,7 +16,6 @@ resource_local_to_scene = true
 shader = ExtResource("1")
 shader_parameter/snow_mask = SubResource("ViewportTexture_mask")
 shader_parameter/snow_max_height = 1.5
-shader_parameter/area_size = 100.0
 shader_parameter/edge_fade = 2.0
 shader_parameter/snow_offset = 0.02
 shader_parameter/albedo = Color(1, 1, 1, 1)
@@ -32,7 +33,6 @@ subdivide_depth = 0
 resource_local_to_scene = true
 shader = ExtResource("4")
 shader_parameter/snow_max_height = 1.5
-shader_parameter/area_size = 100.0
 shader_parameter/edge_fade = 2.0
 shader_parameter/snow_offset = 0.02
 
@@ -42,6 +42,24 @@ size = Vector2(2, 2)
 
 [sub_resource type="Environment" id="Environment_mask"]
 background_mode = 4
+
+[sub_resource type="ShaderMaterial" id="Filter_horizontal"]
+resource_local_to_scene = true
+shader = ExtResource("8_filter")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/accumulate = false
+
+[sub_resource type="ShaderMaterial" id="Filter_a"]
+resource_local_to_scene = true
+shader = ExtResource("8_filter")
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/accumulate = true
+
+[sub_resource type="ShaderMaterial" id="Filter_b"]
+resource_local_to_scene = true
+shader = ExtResource("8_filter")
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/accumulate = true
 
 [node name="Snow" type="Node3D" node_paths=PackedStringArray("snow_surface", "depth_camera_anchor", "mask_viewport", "depth_camera", "mask_quad")]
 script = ExtResource("7")
@@ -62,13 +80,20 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1,
 remote_path = NodePath("../MaskViewport/DepthCamera")
 update_scale = false
 
-[node name="MaskViewport" type="SubViewport" parent="." node_paths=PackedStringArray("mask_quad")]
+[node name="MaskViewport" type="SubViewport" parent="." node_paths=PackedStringArray("mask_quad", "horizontal", "history_a", "history_b", "horizontal_quad", "history_quad_a", "history_quad_b", "snow_surface")]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(512, 512)
 render_target_update_mode = 4
 script = ExtResource("6")
 mask_quad = NodePath("DepthCamera/MaskQuad")
+horizontal = NodePath("../Horizontal")
+history_a = NodePath("../HistoryA")
+history_b = NodePath("../HistoryB")
+horizontal_quad = NodePath("../Horizontal/Filter")
+history_quad_a = NodePath("../HistoryA/Filter")
+history_quad_b = NodePath("../HistoryB/Filter")
+snow_surface = NodePath("../SnowSurface")
 
 [node name="DepthCamera" type="Camera3D" parent="MaskViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1, 0)
@@ -86,3 +111,45 @@ cast_shadow = 0
 visibility_range_end = 0.5
 mesh = SubResource("QuadMesh_mask")
 material_override = SubResource("ShaderMaterial_mask")
+
+[node name="Horizontal" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(512, 512)
+render_target_update_mode = 0
+
+[node name="Filter" type="ColorRect" parent="Horizontal"]
+material = SubResource("Filter_horizontal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HistoryA" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(512, 512)
+render_target_update_mode = 0
+
+[node name="Filter" type="ColorRect" parent="HistoryA"]
+material = SubResource("Filter_a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HistoryB" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(512, 512)
+render_target_update_mode = 0
+
+[node name="Filter" type="ColorRect" parent="HistoryB"]
+material = SubResource("Filter_b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

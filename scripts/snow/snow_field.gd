@@ -357,8 +357,6 @@ func _configure_materials() -> void:
 
 	var mask_material := mask_quad.material_override as ShaderMaterial
 	if mask_material != null:
-		# Leave previous_frame_texture and previous_is_srgb alone: they are
-		# driven by snow_mask.gd's feedback loop.
 		mask_material.set_shader_parameter("deformation_smoothing", deformation_smoothing)
 		mask_material.set_shader_parameter("height_texture", _height_texture)
 		mask_material.set_shader_parameter("snow_max_height", snow_max_height)
