@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 ## Turns the snow prefab into a heightfield that follows a terrain surface.
@@ -16,9 +17,12 @@ extends Node3D
 ## Terrain3D is optional. Without it the baked height is the snow node's own Y,
 ## so the prefab behaves exactly like the original flat snow field.
 
-@export var terrain_path: NodePath
-## Width and depth of the square snow field, in metres.
-@export_range(1.0, 4096.0, 1.0) var area_size: float = 100.0
+@export var terrain: Terrain3D
+## Cached editor bake, saved with the scene. Rebuild after terrain changes.
+@export var bake: SnowBake
+@export_tool_button("Bake snow") var bake_action: Callable = rebake
+
+var _field_size: Vector2
 ## Resolution of the persistent mask viewport and the snow mesh grid.
 @export_range(16, 2048, 1) var mask_resolution: int = 512
 ## Independent geometry budget. Match this to mask resolution for sharp tracks.
@@ -47,14 +51,13 @@ extends Node3D
 @export_range(1, 32, 1) var influence_layer: int = 5
 @export var auto_bake: bool = true
 
-@onready var snow_surface: MeshInstance3D = $SnowSurface
-@onready var depth_camera_anchor: RemoteTransform3D = $DepthCameraAnchor
-@onready var mask_viewport: SubViewport = $MaskViewport
-@onready var depth_camera: Camera3D = $MaskViewport/DepthCamera
-@onready var mask_quad: MeshInstance3D = $MaskViewport/DepthCamera/MaskQuad
+@export var snow_surface: MeshInstance3D
+@export var depth_camera_anchor: RemoteTransform3D
+@export var mask_viewport: SnowMask
+@export var depth_camera: Camera3D
+@export var mask_quad: MeshInstance3D
 
-var _terrain: Node
-var _terrain_data: Object
+var _terrain_data: Terrain3DData
 var _height_texture: ImageTexture
 var _min_height := 0.0
 var _max_height := 0.0
@@ -65,64 +68,55 @@ var _baked_resolution := 0
 
 
 func _ready() -> void:
-	if auto_bake:
-		await _bake_when_terrain_ready()
-
-
-## Terrain3D populates its height maps a frame after entering the tree. Baking
-## in _ready samples the -200 "no data" height, so wait for the load to finish.
-func _bake_when_terrain_ready() -> void:
-	_terrain = _resolve_terrain()
-	if _terrain != null:
+	if bake != null:
+		_apply_bake()
+	elif Engine.is_editor_hint():
+		call_deferred("rebake")
+	elif auto_bake:
 		await get_tree().process_frame
 		await get_tree().process_frame
-	# Wait for region data, with a bounded timeout instead of baking a sentinel.
-	if _terrain != null:
-		for attempt in 120:
-			var data = _terrain.get("data")
-			if data != null and data.call("get_region_count") > 0:
-				break
-			await get_tree().process_frame
-	rebake()
+		rebake()
 
 
-## Re-samples the terrain and rebuilds the snow height texture. Call this after
-## moving the field or editing the terrain at runtime.
 func rebake() -> void:
-	if not global_basis.is_equal_approx(Basis.IDENTITY):
-		push_error("Snow requires world-aligned rotation and unit scale (including parents).")
+	if not is_node_ready():
 		return
-	_terrain = _resolve_terrain()
-	_terrain_data = null
-	if _terrain != null:
-		var data = _terrain.get("data")
-		if data != null and data.has_method("get_surface_height"):
-			_terrain_data = data
-
+	if not global_basis.orthonormalized().is_equal_approx(Basis.IDENTITY) or global_basis.determinant() <= 0.0:
+		push_error("Snow must remain world aligned with positive scale.")
+		return
+	_field_size = Vector2(global_basis.x.length(), global_basis.z.length())
+	_terrain_data = terrain.data if terrain != null else null
 	_configure_viewport()
-	_place_camera_provisional()
 	_bake_height_texture()
 	_build_mesh()
+	bake = SnowBake.new()
+	bake.mesh = snow_surface.mesh
+	bake.height_texture = _height_texture
+	bake.minimum_height = _min_height
+	bake.maximum_height = _max_height
+	bake.field_size = _field_size
+	bake.origin = global_position
+	_apply_bake()
+
+
+func _apply_bake() -> void:
+	_field_size = bake.field_size
+	_min_height = bake.minimum_height
+	_max_height = bake.maximum_height
+	_height_texture = bake.height_texture
+	snow_surface.mesh = bake.mesh
+	# Geometry is in world metres; the root scale defines only the footprint.
+	snow_surface.top_level = true
+	snow_surface.global_transform = Transform3D(Basis.IDENTITY, bake.origin)
+	_configure_viewport()
 	_configure_camera()
 	_configure_materials()
 	_configure_aabb()
-	if mask_viewport.has_method("reset_mask"):
+	if Engine.is_editor_hint():
+		mask_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	else:
+		mask_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 		mask_viewport.reset_mask()
-
-
-func _resolve_terrain() -> Node:
-	if terrain_path != NodePath():
-		var configured := get_node_or_null(terrain_path)
-		if configured != null:
-			return configured
-
-	var root := get_tree().current_scene
-	if root == null:
-		root = get_tree().root
-	for node in root.find_children("*", "", true, false):
-		if node.get_class() == "Terrain3D":
-			return node
-	return null
 
 
 ## Builds the snow mesh with the terrain height already baked into the vertex
@@ -132,7 +126,7 @@ func _resolve_terrain() -> Node:
 func _build_mesh() -> void:
 	var res := clampi(mesh_resolution, 2, 2048)
 	var count := res * res
-	var half := area_size * 0.5
+	var half := _field_size * 0.5
 
 	var vertices := PackedVector3Array()
 	vertices.resize(count)
@@ -150,9 +144,9 @@ func _build_mesh() -> void:
 			var baked := _sample_baked(u, 1.0 - v)
 			var index := y * res + x
 			vertices[index] = Vector3(
-				-half + u * area_size,
+				-half.x + u * _field_size.x,
 				baked.x - global_position.y,
-				-half + v * area_size
+				-half.y + v * _field_size.y
 			)
 			normals[index] = _sample_baked_normal(u, 1.0 - v)
 			uvs[index] = Vector2(u, v)
@@ -252,20 +246,6 @@ func _configure_viewport() -> void:
 	mask_viewport.size = Vector2i(mask_resolution, mask_resolution)
 
 
-func _place_camera_provisional() -> void:
-	# The XZ mapping of an upward-looking orthographic camera does not depend on
-	# its Y position, so the bake can run before the terrain height range is
-	# known. The camera is moved to its final height afterwards.
-	depth_camera_anchor.position = Vector3(0.0, -1.0, 0.0)
-	if depth_camera_anchor.has_method("force_update_cache"):
-		depth_camera_anchor.force_update_cache()
-	depth_camera.global_transform = depth_camera_anchor.global_transform
-	depth_camera.size = area_size
-	depth_camera.near = 0.05
-	depth_camera.far = 1000.0
-	depth_camera.cull_mask = _depth_cull_mask()
-
-
 func _bake_height_texture() -> void:
 	var res := clampi(height_resolution, 2, 2048)
 	var count := res * res
@@ -276,7 +256,7 @@ func _bake_height_texture() -> void:
 
 	var min_h := INF
 	var max_h := -INF
-	var viewport_size := Vector2(mask_viewport.size)
+	
 
 	for y in res:
 		for x in res:
@@ -284,7 +264,7 @@ func _bake_height_texture() -> void:
 				(float(x) + 0.5) / float(res),
 				(float(y) + 0.5) / float(res)
 			)
-			var ray_origin := depth_camera.project_ray_origin(uv * viewport_size)
+			var ray_origin := global_position + Vector3((uv.x - 0.5) * _field_size.x, 0.0, (0.5 - uv.y) * _field_size.y)
 			var h := _sample_height(ray_origin.x, ray_origin.z)
 			var index := y * res + x
 			heights[index] = h
@@ -310,7 +290,7 @@ func _bake_height_texture() -> void:
 	coverage_values.resize(count)
 	var normal_values := PackedVector3Array()
 	normal_values.resize(count)
-	var spacing := area_size / float(res)
+	var spacing := _field_size / float(res)
 	var cos_limit := cos(deg_to_rad(slope_limit_degrees))
 	var cos_fade := cos(deg_to_rad(minf(slope_limit_degrees + slope_fade_degrees, 89.0)))
 
@@ -323,9 +303,9 @@ func _bake_height_texture() -> void:
 			var hd := heights[maxi(y - 1, 0) * res + x]
 			var hu := heights[mini(y + 1, res - 1) * res + x]
 			# Rows run from +Z to -Z, so the +Z neighbour is the previous row.
-			var nx := hl - hr
-			var nz := hu - hd
-			var ny := 2.0 * spacing
+			var nx := (hl - hr) / spacing.x
+			var nz := (hu - hd) / spacing.y
+			var ny := 2.0
 			var normal := Vector3(nx, ny, nz).normalized()
 			var coverage := smoothstep(cos_fade, cos_limit, normal.y) if slope_fade_degrees > 0.0 else float(normal.y >= cos_limit)
 			if valid[index] == 0:
@@ -348,21 +328,16 @@ func _sample_height(x: float, z: float) -> float:
 		# prefab's own origin.
 		return global_position.y
 
-	var h = _terrain_data.call("get_surface_height", Vector3(x, 0.0, z))
-	if typeof(h) == TYPE_FLOAT:
-		return h
-	if typeof(h) == TYPE_INT:
-		return float(h)
-	return NAN
+	return _terrain_data.get_surface_height(Vector3(x, 0.0, z))
 
 
 func _configure_camera() -> void:
 	var camera_y := _min_height - 1.0
-	depth_camera_anchor.position = Vector3(0.0, camera_y - global_position.y, 0.0)
-	if depth_camera_anchor.has_method("force_update_cache"):
-		depth_camera_anchor.force_update_cache()
-	depth_camera.global_transform = depth_camera_anchor.global_transform
-	depth_camera.size = area_size
+	depth_camera_anchor.force_update_cache()
+	depth_camera.global_transform = Transform3D(Basis(Vector3.RIGHT, -PI / 2.0), Vector3(bake.origin.x, camera_y, bake.origin.z))
+	depth_camera.keep_aspect = Camera3D.KEEP_HEIGHT
+	depth_camera.size = _field_size.y
+	mask_viewport.size = Vector2i(maxi(16, roundi(mask_resolution * _field_size.x / _field_size.y)), mask_resolution)
 	depth_camera.near = 0.05
 	depth_camera.far = _max_height + snow_max_height - camera_y + 2.0
 	depth_camera.cull_mask = _depth_cull_mask()
@@ -374,8 +349,8 @@ func _configure_materials() -> void:
 	var snow_material := snow_surface.material_override as ShaderMaterial
 	if snow_material != null:
 		snow_material.set_shader_parameter("snow_max_height", snow_max_height)
-		snow_material.set_shader_parameter("area_size", area_size)
-		snow_material.set_shader_parameter("mesh_spacing", area_size / float(maxi(mesh_resolution - 1, 1)))
+		snow_material.set_shader_parameter("field_size", _field_size)
+		snow_material.set_shader_parameter("mesh_spacing", _field_size / float(maxi(mesh_resolution - 1, 1)))
 		snow_material.set_shader_parameter("edge_fade", edge_fade)
 		snow_material.set_shader_parameter("snow_offset", snow_offset)
 		snow_material.set_shader_parameter("mask_is_srgb", not compatibility)
@@ -387,7 +362,7 @@ func _configure_materials() -> void:
 		mask_material.set_shader_parameter("deformation_smoothing", deformation_smoothing)
 		mask_material.set_shader_parameter("height_texture", _height_texture)
 		mask_material.set_shader_parameter("snow_max_height", snow_max_height)
-		mask_material.set_shader_parameter("area_size", area_size)
+		mask_material.set_shader_parameter("field_size", _field_size)
 		mask_material.set_shader_parameter("edge_fade", edge_fade)
 		mask_material.set_shader_parameter("snow_offset", snow_offset)
 		mask_material.set_shader_parameter("ndc_z_scale", 2.0 if compatibility else 1.0)
@@ -397,11 +372,11 @@ func _configure_materials() -> void:
 func _configure_aabb() -> void:
 	var min_local := _min_height - global_position.y
 	var max_local := _max_height - global_position.y
-	var half := area_size * 0.5
+	var half := _field_size * 0.5
 	var height := max_local - min_local + snow_max_height + 0.3
 	snow_surface.custom_aabb = AABB(
-		Vector3(-half, min_local - 0.1, -half),
-		Vector3(area_size, height, area_size)
+		Vector3(-half.x, min_local - 0.1, -half.y),
+		Vector3(_field_size.x, height, _field_size.y)
 	)
 
 

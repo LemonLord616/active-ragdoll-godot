@@ -1,4 +1,6 @@
+@tool
 extends SubViewport
+class_name SnowMask
 
 ## Feeds the mask viewport back into its own shader.
 ##
@@ -44,6 +46,8 @@ func reset_mask() -> void:
 
 
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	await RenderingServer.frame_post_draw
 
 	if _material != null:

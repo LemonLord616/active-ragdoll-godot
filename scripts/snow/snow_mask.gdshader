@@ -13,7 +13,7 @@ uniform sampler2D previous_frame_texture : hint_default_black, filter_linear;
 uniform sampler2D height_texture : hint_default_black, filter_linear, repeat_disable;
 
 uniform float snow_max_height = 1.5;
-uniform float area_size = 100.0;
+uniform vec2 field_size = vec2(100.0);
 uniform float edge_fade = 2.0;
 uniform float snow_offset = 0.02;
 uniform float deformation_smoothing = 0.15;
@@ -58,7 +58,7 @@ float contact_compaction(vec2 uv, mat4 inv_projection, mat4 inv_view) {
  vec4 height_data = texture(height_texture, uv);
  vec2 edge_distance = min(uv, vec2(1.0) - uv);
  vec2 edge_t = smoothstep(vec2(0.0),
-  vec2(max(edge_fade, 0.001) / max(area_size, 0.001)), edge_distance);
+  vec2(max(edge_fade, 0.001)) / max(field_size, vec2(0.001)), edge_distance);
  float local_height = snow_max_height * height_data.g * edge_t.x * edge_t.y;
  if (local_height <= 0.001) { return 0.0; }
  return clamp((height_data.r + local_height + snow_offset - object_y) / local_height, 0.0, 1.0);
@@ -71,7 +71,7 @@ void fragment() {
  } else {
   // Dense pixel-spaced taps avoid repeated copies of narrow contacts.
   vec2 texel = 1.0 / vec2(textureSize(depth_texture, 0));
-  float radius_pixels = clamp(deformation_smoothing / max(area_size, 0.001) / texel.x, 1.0, 16.0);
+  float radius_pixels = clamp(deformation_smoothing / max(field_size.x, 0.001) / texel.x, 1.0, 16.0);
   int radius = int(ceil(radius_pixels));
   float sigma = max(radius_pixels / 3.0, 0.5);
   float weight_sum = 0.0;

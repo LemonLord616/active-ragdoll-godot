@@ -43,8 +43,14 @@ size = Vector2(2, 2)
 [sub_resource type="Environment" id="Environment_mask"]
 background_mode = 4
 
-[node name="Snow" type="Node3D"]
+[node name="Snow" type="Node3D" node_paths=PackedStringArray("snow_surface", "depth_camera_anchor", "mask_viewport", "depth_camera", "mask_quad")]
 script = ExtResource("7")
+scale = Vector3(100, 1, 100)
+snow_surface = NodePath("SnowSurface")
+depth_camera_anchor = NodePath("DepthCameraAnchor")
+mask_viewport = NodePath("MaskViewport")
+depth_camera = NodePath("MaskViewport/DepthCamera")
+mask_quad = NodePath("MaskViewport/DepthCamera/MaskQuad")
 
 [node name="SnowSurface" type="MeshInstance3D" parent="."]
 layers = 2

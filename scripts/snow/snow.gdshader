@@ -10,10 +10,10 @@ uniform float snow_max_height = 1.5;
 uniform bool mask_is_srgb = true;
 
 // Baked heightfield parameters.
-uniform float area_size = 100.0;
+uniform vec2 field_size = vec2(100.0);
 uniform float edge_fade = 2.0;
 uniform float snow_offset = 0.02;
-uniform float mesh_spacing = 0.078;
+uniform vec2 mesh_spacing = vec2(0.078);
 
 uniform vec4 albedo : source_color = vec4(1.0);
 uniform vec4 albedo_bottom : source_color = vec4(0.7636, 0.8418, 0.92, 1.0);
@@ -88,7 +88,7 @@ float snow_depth(vec2 uv, float coverage) {
 	vec2 edge_distance = min(uv, vec2(1.0) - uv);
 	vec2 edge_t = smoothstep(
 		vec2(0.0),
-		vec2(max(edge_fade, 0.001) / max(area_size, 0.001)),
+		vec2(max(edge_fade, 0.001) / max(field_size, vec2(0.001))),
 		edge_distance
 	);
 	float edge = edge_t.x * edge_t.y;
@@ -110,15 +110,15 @@ void vertex() {
 	// by the snow thickness gradient. Derivative normals in the fragment stage
 	// pick up per-row interpolation noise in Compatibility and stripe the
 	// surface, so the normal is built here instead.
-	vec2 mask_texel = max(1.0 / vec2(textureSize(snow_mask, 0)), vec2(mesh_spacing / max(area_size, 0.001)));
+	vec2 mask_texel = max(1.0 / vec2(textureSize(snow_mask, 0)), vec2(mesh_spacing / max(field_size, vec2(0.001))));
 	float depth_left = snow_depth(mask_uv - vec2(mask_texel.x, 0.0), coverage);
 	float depth_right = snow_depth(mask_uv + vec2(mask_texel.x, 0.0), coverage);
 	float depth_back = snow_depth(mask_uv - vec2(0.0, mask_texel.y), coverage);
 	float depth_front = snow_depth(mask_uv + vec2(0.0, mask_texel.y), coverage);
 
-	float snow_dx = (depth_right - depth_left) / (2.0 * mask_texel.x * area_size);
+	float snow_dx = (depth_right - depth_left) / (2.0 * mask_texel.x * field_size.x);
 	// mask_uv.y decreases as local +Z increases.
-	float snow_dz = -(depth_front - depth_back) / (2.0 * mask_texel.y * area_size);
+	float snow_dz = -(depth_front - depth_back) / (2.0 * mask_texel.y * field_size.y);
 
 	vec3 terrain_normal = normalize(NORMAL);
 	float terrain_dx = -terrain_normal.x / max(terrain_normal.y, 0.001);
@@ -135,7 +135,7 @@ void vertex() {
 	vec2 edge_distance = min(mask_uv, vec2(1.0) - mask_uv);
 	vec2 edge_t = smoothstep(
 		vec2(0.0),
-		vec2(max(edge_fade, 0.001) / max(area_size, 0.001)),
+		vec2(max(edge_fade, 0.001) / max(field_size, vec2(0.001))),
 		edge_distance
 	);
 	v_coverage = coverage;
