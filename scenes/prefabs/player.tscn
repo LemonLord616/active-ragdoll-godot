@@ -9,96 +9,100 @@
 [ext_resource type="Script" uid="uid://c0t6tmmp1u53w" path="res://scripts/player/states/walk.gd" id="6_1a8bf"]
 [ext_resource type="Script" uid="uid://dt5uwq3uln0wl" path="res://scripts/player/states/run.gd" id="7_gsvhg"]
 [ext_resource type="Script" uid="uid://beks6rffbne6f" path="res://scripts/player/states/in_air.gd" id="8_gx6q2"]
-[ext_resource type="PackedScene" uid="uid://c1ss4607tbtl0" path="res://assets/models/UAL1_Physical.glb" id="9_mgyw5"]
 [ext_resource type="Script" uid="uid://tqrfow44fo8g" path="res://scripts/player/movement/pd_controller.gd" id="10_20t1h"]
-[ext_resource type="PackedScene" uid="uid://cpdj3kud7sa5t" path="res://assets/models/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb" id="11_gqqm3"]
-[ext_resource type="Script" uid="uid://5tykjymxwm17" path="res://scripts/player/movement/velocity_skeleton.gd" id="11_va4sl"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="12_oqywh"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_sutpr"]
 [ext_resource type="Script" uid="uid://c3f2y756xxmi0" path="res://scripts/player/movement/motor.gd" id="14_aal4f"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="14_tf2tk"]
 [ext_resource type="Script" uid="uid://bdfr26gna4g85" path="res://scripts/debugger.gd" id="15_xtlg4"]
+[ext_resource type="PackedScene" uid="uid://ewwlh4yh4n1g" path="res://assets/models/Character.glb" id="16_va4sl"]
+[ext_resource type="PackedScene" uid="uid://dcm15oxhco86c" path="res://assets/models/CharacterPhysical.glb" id="17_20t1h"]
 
 [sub_resource type="Resource" id="Resource_7y1wn"]
 script = ExtResource("13_sutpr")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwfl5"]
-albedo_color = Color(1, 0.07450981, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25vxo"]
 radius = 0.1
 height = 0.5
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20t1h"]
+radius = 0.068359375
+height = 0.43532228
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aal4f"]
+radius = 0.04618108
+height = 0.4618108
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1a8bf"]
-radius = 0.11621094
-height = 0.23242188
+radius = 0.036132813
+height = 0.12874964
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gsvhg"]
-radius = 0.10449219
-height = 0.20898438
+radius = 0.068
+height = 0.43532228
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gx6q2"]
-radius = 0.11669922
-height = 0.23339844
+radius = 0.04618108
+height = 0.4618108
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mgyw5"]
-radius = 0.13378906
-height = 0.26757813
+radius = 0.036
+height = 0.12810475
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ajr3h"]
-radius = 0.08496094
-height = 0.39923352
+radius = 0.04248047
+height = 0.31383687
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqqm3"]
-radius = 0.022129226
-height = 0.22129227
+radius = 0.03515625
+height = 0.23180294
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lsyt0"]
+radius = 0.024414063
+height = 0.14274903
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqywh"]
-radius = 0.04736328
-height = 0.2744403
+radius = 0.042
+height = 0.31383687
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c3h8k"]
+radius = 0.024
+height = 0.143
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sutpr"]
-radius = 0.04345703
-height = 0.27264056
+radius = 0.035
+height = 0.23180304
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tf2tk"]
+radius = 0.07373047
+height = 0.27
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxx3e"]
-radius = 0.022129226
-height = 0.22129227
+radius = 0.061523438
+height = 0.26
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tg447"]
-radius = 0.047
-height = 0.27444026
+radius = 0.075683594
+height = 0.28
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0t1n1"]
-radius = 0.043
-height = 0.2726405
+radius = 0.095214844
+height = 0.3
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g5m2n"]
-radius = 0.06542969
-height = 0.40030977
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xne2s"]
+radius = 0.033203125
+height = 0.1
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ydol4"]
-radius = 0.042947985
-height = 0.5198699
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0c5kw"]
+radius = 0.08300781
+height = 0.22709961
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8qhcd"]
-radius = 0.065
-height = 0.40030977
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p0ax3"]
-radius = 0.042947978
-height = 0.5198699
-
-[node name="Player" type="Node3D" unique_id=1982801174 node_paths=PackedStringArray("device", "camera", "motor", "pdcontroller", "bone_sim", "pelvis_bone", "anim_player", "target_skeleton")]
+[node name="Player" type="Node3D" unique_id=1982801174 node_paths=PackedStringArray("device", "camera", "motor", "pdcontroller")]
 script = ExtResource("1_c1k3r")
 device = NodePath("Keyboard")
 camera = NodePath("PhantomCamera3D")
 motor = NodePath("CharacterBody3D")
 pdcontroller = NodePath("PDController")
-bone_sim = NodePath("UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D")
-pelvis_bone = NodePath("UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone Hips")
-anim_player = NodePath("CharacterBody3D/UAL_Animation/AnimationPlayer")
-target_skeleton = NodePath("CharacterBody3D/UAL_Animation/Armature/GeneralSkeleton")
 metadata/_custom_type_script = "uid://031rnc534vhk"
 
 [node name="Keyboard" type="Node" parent="." unique_id=1306213669]
@@ -179,1265 +183,253 @@ script = ExtResource("14_aal4f")
 allowed_offset = 0.3
 player = NodePath("..")
 
-[node name="UAL_Animation" parent="CharacterBody3D" unique_id=1846663490 instance=ExtResource("11_gqqm3")]
-
-[node name="GeneralSkeleton" parent="CharacterBody3D/UAL_Animation/Armature" parent_id_path=PackedInt32Array(1846663490, 262033133) index="0" unique_id=1937917816]
-bones/1/position = Vector3(0, 0.9167, -0.050100047)
-bones/1/rotation = Quaternion(2.682209e-07, 0, 0, 1)
-bones/3/rotation = Quaternion(-1.4528631e-07, 0, 0, 1)
-bones/4/rotation = Quaternion(-4.4703484e-08, 0, 0, 1)
-bones/5/rotation = Quaternion(2.2351742e-08, 0, 0, 1)
-bones/6/rotation = Quaternion(2.3841858e-07, 0, 0, 1)
-bones/7/rotation = Quaternion(0.5, 0.49999988, 0.5, -0.5000001)
-bones/8/rotation = Quaternion(1.6391276e-07, 1, 4.4703476e-08, -2.9802319e-08)
-bones/9/rotation = Quaternion(-1.1590383e-07, -0.70710695, -1.0536709e-08, 0.7071066)
-bones/10/rotation = Quaternion(-1.8751639e-07, 0.70710707, 1.07511596e-07, 0.7071065)
-bones/11/rotation = Quaternion(3.5762793e-07, -3.725291e-07, 5.960465e-08, 1)
-bones/12/rotation = Quaternion(0, -1.1920929e-07, 5.9604645e-08, 1)
-bones/13/rotation = Quaternion(0, 0, 5.9604645e-08, 1)
-bones/15/rotation = Quaternion(3.1292439e-07, -2.3841858e-07, 5.9604645e-08, 1)
-bones/16/rotation = Quaternion(-2.9802322e-08, -1.1920929e-07, 2.9802322e-08, 1)
-bones/17/rotation = Quaternion(0, -5.960466e-08, -2.980233e-08, 1)
-bones/19/rotation = Quaternion(3.4272674e-07, -2.831221e-07, 2.9802326e-08, 1)
-bones/20/rotation = Quaternion(0, -1.0430813e-07, 5.9604645e-08, 1)
-bones/23/rotation = Quaternion(2.8312203e-07, -4.4703478e-07, 5.9604638e-08, 1)
-bones/24/rotation = Quaternion(2.9802322e-08, -8.940697e-08, 8.940697e-08, 1)
-bones/25/rotation = Quaternion(0, 0, -5.9604645e-08, 1)
-bones/27/rotation = Quaternion(-0.2141867, 0.67388695, 0.21418685, 0.67388755)
-bones/28/rotation = Quaternion(-1.3411045e-07, -5.9604645e-08, -5.9604645e-08, 1)
-bones/29/rotation = Quaternion(1.4901161e-08, 7.4505806e-08, 2.9802322e-08, 1)
-bones/30/scale = Vector3(1.0001454, 1.0004876, 1.0005833)
-bones/31/rotation = Quaternion(0.5, -0.49999988, -0.5, -0.5000001)
-bones/32/rotation = Quaternion(-1.3411044e-07, 1, 7.45058e-08, 2.9802319e-08)
-bones/33/rotation = Quaternion(-1.3697726e-07, 0.707107, -1.0536716e-08, 0.70710665)
-bones/34/rotation = Quaternion(-1.8728218e-07, -0.7071071, -1.07745805e-07, 0.7071064)
-bones/35/rotation = Quaternion(3.8743025e-07, 3.8743025e-07, -8.940698e-08, 1)
-bones/36/rotation = Quaternion(-2.9802322e-08, 1.1920929e-07, -2.9802322e-08, 1)
-bones/37/rotation = Quaternion(0, -1.4901161e-08, -1.4901161e-08, 1)
-bones/38/rotation = Quaternion(4.93601e-08, 1, 1.31505296e-08, -7.2555615e-08)
-bones/39/rotation = Quaternion(4.0233135e-07, 2.2351742e-07, -5.9604645e-08, 1)
-bones/40/rotation = Quaternion(-2.9802322e-08, 1.1920929e-07, -2.9802322e-08, 1)
-bones/41/rotation = Quaternion(1.4901165e-08, 1.4901165e-08, 4.4703494e-08, 1)
-bones/43/rotation = Quaternion(3.8743025e-07, 3.2782557e-07, -8.940698e-08, 1)
-bones/44/rotation = Quaternion(-1.4901161e-08, 1.3411045e-07, -7.4505806e-08, 1)
-bones/45/rotation = Quaternion(1.4901161e-08, 1.4901161e-08, 0, 1)
-bones/46/rotation = Quaternion(-0.03375011, 0.99943036, 7.077092e-09, -1.322724e-07)
-bones/47/rotation = Quaternion(3.874302e-07, 3.2782555e-07, -8.940697e-08, 1)
-bones/48/rotation = Quaternion(-1.4901161e-08, 1.0430813e-07, -2.9802322e-08, 1)
-bones/49/rotation = Quaternion(0, 5.9604645e-08, 0, 1)
-bones/50/rotation = Quaternion(-0.018857837, 0.9998222, -1.5216909e-08, -2.369153e-07)
-bones/51/rotation = Quaternion(-0.21418679, -0.6738869, -0.21418697, 0.6738875)
-bones/52/rotation = Quaternion(1.4901163e-08, 8.940698e-08, -5.960465e-08, 1)
-bones/53/rotation = Quaternion(5.9604638e-08, -2.9802319e-08, -2.9802319e-08, 1)
-bones/54/scale = Vector3(1.0001453, 1.0004876, 1.0005833)
-bones/55/rotation = Quaternion(0, 2.115965e-06, 1, 0)
-bones/56/rotation = Quaternion(4.9513798e-09, 1, -3.8300645e-06, 6.331045e-10)
-bones/57/rotation = Quaternion(3.019401e-09, 0.70710546, -0.7071081, -3.4309913e-09)
-bones/58/rotation = Quaternion(4.4117336e-08, 1, 5.9604645e-08, 1.9473367e-08)
-bones/60/rotation = Quaternion(-6.510936e-11, 2.115965e-06, 1, -9.305792e-09)
-bones/61/rotation = Quaternion(5.2846154e-09, 1, -3.8300645e-06, 2.7046976e-10)
-bones/62/rotation = Quaternion(-3.0232599e-09, 0.70710546, -0.7071081, 3.2290552e-09)
-bones/63/rotation = Quaternion(4.4117336e-08, 1, 5.9604645e-08, 1.9473367e-08)
-script = ExtResource("11_va4sl")
-
-[node name="Mannequin" parent="CharacterBody3D/UAL_Animation/Armature/GeneralSkeleton" index="0" unique_id=2050489226]
-layers = 17
-material_override = SubResource("StandardMaterial3D_cwfl5")
-transparency = 0.9
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=421228695]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999998, 0)
 shape = SubResource("CapsuleShape3D_25vxo")
 
-[node name="UAL_Physical" parent="." unique_id=1044438688 instance=ExtResource("9_mgyw5")]
+[node name="CharacterVisual" parent="CharacterBody3D" unique_id=517177181 instance=ExtResource("16_va4sl")]
 
-[node name="Mannequin" parent="UAL_Physical/Armature/GeneralSkeleton" parent_id_path=PackedInt32Array(1044438688, 1566024839) index="0" unique_id=1525142104]
-layers = 17
+[node name="CharacterPhysical" parent="." unique_id=353520983 instance=ExtResource("17_20t1h")]
 
-[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="UAL_Physical/Armature/GeneralSkeleton" parent_id_path=PackedInt32Array(1044438688, 1566024839) index="1" unique_id=1884361676]
+[node name="Cube" parent="CharacterPhysical/rig/GeneralSkeleton" parent_id_path=PackedInt32Array(353520983, 91959811) index="0" unique_id=1793847044]
+transparency = 0.6
 
-[node name="Physical Bone Hips" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1966297571]
-transform = Transform3D(-1, 0, 0, 0, 0.24968068, -0.96832824, 0, -0.96832824, -0.24968068, 2.220446e-16, 0.9836, -0.03285005)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.220446e-16, 0, 0.06908816)
-body_offset = Transform3D(-1, 0, 0, 0, 0.24968068, -0.96832824, 0, -0.96832824, -0.24968068, 2.220446e-16, 0.066900015, 0.01724998)
-mass = 10.0
-bone_name = "Hips"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="CharacterPhysical/rig/GeneralSkeleton" parent_id_path=PackedInt32Array(353520983, 91959811) index="1" unique_id=1540671103]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone Hips" unique_id=1630934598]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 2.1144386e-09, -0.023420334, -0.0060388446)
+[node name="Physical Bone DEF-thigh_L" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=911563307]
+transform = Transform3D(0.9054317, -0.42191285, -0.046723135, 0.031011889, -0.044028487, 0.99854887, -0.4233577, -0.90556675, -0.02678047, 0.099291764, 0.7575997, -0.005452279)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4117566e-06, -1.8795682e-06, 0.21760479)
+body_offset = Transform3D(1.0000001, 4.7683716e-07, -2.7939677e-09, 0, 7.450581e-09, -0.9999999, -4.7683716e-07, 1.0000033, 9.313226e-09, 3.412366e-06, 0.21760476, 1.8775463e-06)
+bone_name = "DEF-thigh.L"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-thigh_L" unique_id=649811518]
+transform = Transform3D(0.99999905, -3.7252903e-09, 0, 0, -2.4214387e-08, 0.9999999, -1.1269003e-07, -1, -1.8626451e-09, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_20t1h")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Physical Bone DEF-shin_L" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1616752229]
+transform = Transform3D(0.9054316, -0.42396516, 0.021147046, 0.03101189, 0.11574966, 0.99279416, -0.42335787, -0.8982515, 0.11795134, 0.104578055, 0.310954, -0.026854327)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2042396e-07, -2.3742994e-07, 0.23090795)
+body_offset = Transform3D(1.0000001, -2.9802322e-08, -3.7252903e-09, -1.1175871e-08, 1.7881393e-07, -1.0000001, 0, 1.0000033, -9.23872e-07, -8.1956387e-07, 0.23090798, 4.5076013e-07)
+bone_name = "DEF-shin.L"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-shin_L" unique_id=1035090626]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_aal4f")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Physical Bone DEF-foot_L" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=199303591]
+transform = Transform3D(0.9858052, -0.0887413, -0.14252385, 0.00029983668, -0.84796494, 0.5300523, -0.16789274, -0.5225711, -0.8359017, 0.10806326, 0.05056764, -0.00496104)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.307537e-06, 3.7219934e-06, 0.058768675)
+body_offset = Transform3D(1.0000005, 0.00025448203, -0.00015826523, -0.00015690923, -6.648898e-05, -1.0000023, -0.00025544316, 1.0000011, -6.341934e-05, -7.450581e-09, 0.05876881, 7.450581e-09)
+bone_name = "DEF-foot.L"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-foot_L" unique_id=1297832819]
+transform = Transform3D(0.9999973, -5.364418e-07, 9.685755e-08, -8.121133e-07, -1.7881393e-07, 0.99999535, -1.0430813e-06, -0.9999969, -3.3080578e-06, 0, 1.4901161e-08, -0.005606031)
 shape = SubResource("CapsuleShape3D_1a8bf")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone Spine" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1926043311]
-transform = Transform3D(-1, 0, 0, 0, 0.12254606, -0.9924629, 0, -0.9924629, -0.12254606, -1.9784119e-11, 1.11205, -0.008000076)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9784119e-11, -3.7252903e-09, 0.062017452)
-body_offset = Transform3D(-1, 0, 0, 0, 0.12254606, -0.9924629, 0, -0.9924629, -0.12254606, -1.9784119e-11, 0.06155002, 0.007599991)
-mass = 15.0
-bone_name = "Spine"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-thigh_R" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1476928886]
+transform = Transform3D(0.9054317, 0.42191285, 0.046723135, -0.031011889, -0.044028487, 0.99854887, 0.4233577, -0.90556675, -0.02678047, -0.099291764, 0.7575997, -0.005452279)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4117566e-06, -1.8795682e-06, 0.21760479)
+body_offset = Transform3D(1.0000001, -4.7683716e-07, 2.7939677e-09, 0, 7.450581e-09, -0.9999999, 4.7683716e-07, 1.0000033, 9.313226e-09, -3.412366e-06, 0.21760476, 1.8775463e-06)
+bone_name = "DEF-thigh.R"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone Spine" unique_id=957151960]
-transform = Transform3D(1, 7.81597e-14, -2.2737368e-13, 2.1316282e-13, -2.0861626e-07, 0.9999968, 1.8651747e-14, -0.9999968, -2.0861626e-07, 2.6077975e-09, -0.029605068, -0.0036555529)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-thigh_R" unique_id=1640941235]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_gsvhg")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone Chest" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1082191482]
-transform = Transform3D(1, 0, 0, 0, 0.03185366, -0.9994926, 0, 0.9994926, 0.03185366, 4.946016e-12, 1.2442, -0.0026500984)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.946016e-12, 1.1641532e-09, 0.07063588)
-body_offset = Transform3D(1, 0, 0, 0, 0.03185366, -0.9994926, 0, 0.9994926, 0.03185366, 4.946016e-12, 0.07060003, -0.0022500125)
-mass = 15.0
-bone_name = "Chest"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-shin_R" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1011594428]
+transform = Transform3D(0.9054316, 0.42396516, -0.021147046, -0.03101189, 0.11574966, 0.99279416, 0.42335787, -0.8982515, 0.11795134, -0.104578055, 0.310954, -0.026854327)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2042396e-07, -2.3742994e-07, 0.23090795)
+body_offset = Transform3D(1.0000001, 2.9802322e-08, 3.7252903e-09, 1.1175871e-08, 1.7881393e-07, -1.0000001, 0, 1.0000033, -9.23872e-07, 8.1956387e-07, 0.23090798, 4.5076013e-07)
+bone_name = "DEF-shin.R"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone Chest" unique_id=1851299991]
-transform = Transform3D(1, -5.551115e-15, 4.2632564e-14, 2.9842795e-13, 1.0803342e-07, 0.99999505, 1.5765167e-14, -0.99999505, 1.0803342e-07, -1.3115595e-09, 0.0149948485, 0.00047791004)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-shin_R" unique_id=654802883]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_gx6q2")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone UpperChest" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1327529310]
-transform = Transform3D(1, 0, 0, 0, 0.032390613, -0.9994753, 0, 0.9994753, 0.032390613, 0, 1.4012002, -0.0077001294)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.9849193e-10, 0.08644539)
-body_offset = Transform3D(1, 0, 0, 0, 0.032390613, -0.9994753, 0, 0.9994753, 0.032390613, 0, 0.08640003, -0.0028000185)
-mass = 7.5
-bone_name = "UpperChest"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-foot_R" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1638208915]
+transform = Transform3D(0.9858052, 0.0887413, 0.14252385, -0.00029983668, -0.84796494, 0.5300523, 0.16789274, -0.5225711, -0.8359017, -0.10806326, 0.05056764, -0.00496104)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.307537e-06, 3.7219934e-06, 0.058768675)
+body_offset = Transform3D(1.0000005, -0.00025448203, 0.00015826523, 0.00015690923, -6.648898e-05, -1.0000023, 0.00025544316, 1.0000011, -6.341934e-05, 7.450581e-09, 0.05876881, 7.450581e-09)
+bone_name = "DEF-foot.R"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone UpperChest" unique_id=457058458]
-transform = Transform3D(1, 5.062617e-14, 0, 0, 0, 1, 0, -1, 0, 2.5948852e-09, -0.029666465, -0.0009614229)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-foot_R" unique_id=762342126]
+transform = Transform3D(1.0000023, -1.3411045e-07, 9.685755e-08, 0, -7.4505806e-07, 1.0000006, -5.9604645e-08, -1.0000007, 5.9604645e-07, 1.4901161e-08, -1.1175871e-08, -0.005283572)
 shape = SubResource("CapsuleShape3D_mgyw5")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone Neck" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=2084126167]
-transform = Transform3D(-1, 0, 0, 0, 0.1888921, -0.98199785, 0, -0.98199785, -0.1888921, -2.7755576e-17, 1.5281502, -0.0027001542)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7755576e-17, 3.7252903e-09, 0.041293364)
-body_offset = Transform3D(-1, 0, 0, 0, 0.1888921, -0.98199785, 0, -0.98199785, -0.1888921, -2.7755576e-17, 0.040549994, 0.0077999937)
-mass = 8.1
-bone_name = "Neck"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = -30.0
-joint_constraints/x/angular_limit_lower = -60.0
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-upper_arm_L" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1416478673]
+transform = Transform3D(-0.016013065, 0.05509056, -0.998353, -0.90915453, 0.41476998, 0.037469976, 0.41615108, 0.9082571, 0.043444097, 0.33295584, 1.4499825, -0.07366562)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5739982e-08, -1.3087896e-07, 0.15691997)
+body_offset = Transform3D(1.0000001, 1.7881393e-07, 6.593764e-07, 5.662441e-07, -2.682209e-07, -1.0000002, -1.1920929e-07, 1.0000002, -3.054738e-07, -1.1920929e-07, 0.15692002, 1.7881393e-07)
+bone_name = "DEF-upper_arm.L"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone Neck" unique_id=891286111]
-transform = Transform3D(1, -1.8353044e-09, -3.326477e-10, 3.71692e-10, 0.02132605, 0.9997726, -1.8270683e-09, -0.9997726, 0.02132605, -2.4799105e-09, 0.014855474, -0.09191477)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-upper_arm_L" unique_id=91901734]
+transform = Transform3D(1, 4.284084e-08, -5.662441e-07, -1.7881393e-07, 9.313226e-08, 0.99999964, 1.3411045e-07, -1, 2.4959445e-07, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ajr3h")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone LeftShoulder" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1404576685]
-transform = Transform3D(0, 0.6229982, -0.78222334, -0.99227786, 0.097023234, 0.0772737, 0.1240352, 0.7761829, 0.61818725, 0.10534998, 1.4493501, 0.0029998422)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1175871e-08, -1.9208528e-09, 0.110646136)
-body_offset = Transform3D(0.1240352, 0.7761829, 0.61818725, 0, 0.6229982, -0.78222334, -0.99227786, 0.097023234, 0.0772737, -0.068400025, 0.08654998, -0.008550048)
-bone_name = "LeftShoulder"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-forearm_L" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=449461190]
+transform = Transform3D(-0.016014425, -0.16231461, -0.9866091, -0.9091547, 0.4130471, -0.05319634, 0.41615057, 0.89612836, -0.15418382, 0.603971, 1.4502723, -0.06261137)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4250825e-06, -1.7661581e-06, 0.11590913)
+body_offset = Transform3D(1.0000004, 4.4703484e-07, -7.5250864e-07, -8.1956387e-07, -1.385808e-06, -1.0000002, -3.874302e-07, 1.0000004, -1.475215e-06, -3.33786e-06, 0.11590916, 1.937151e-06)
+bone_name = "DEF-forearm.L"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone LeftShoulder" unique_id=1015660299]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-forearm_L" unique_id=2120919420]
+transform = Transform3D(1, 6.7055225e-08, 2.3841858e-07, 0, -4.4703484e-08, 0.99999964, -7.450581e-09, -1, -1.6391277e-07, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_gqqm3")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone LeftUpperArm" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1903704055]
-transform = Transform3D(0, 0.01712564, -0.9998534, -1, 8.020023e-06, 1.3736818e-07, 8.021199e-06, 0.9998534, 0.01712564, 0.32909998, 1.4408001, -0.06775016)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8849661e-08, -2.561137e-09, 0.13722014)
-body_offset = Transform3D(-8.021199e-06, -0.9998534, -0.01712564, 0, 0.01712564, -0.9998534, 1, -8.020023e-06, -1.3736818e-07, 0.0023499802, 0.13720001, 0)
-mass = 2.8
-bone_name = "LeftUpperArm"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-hand_L" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=2127989755]
+transform = Transform3D(-0.13764115, 0.9901282, -0.026476676, -0.9019545, -0.11424783, 0.41644394, 0.409308, 0.08120058, 0.9087758, 0.71831316, 1.4564334, -0.044742934)
+body_offset = Transform3D(1.0000002, -1.4901161e-08, 1.4901161e-07, -4.0978193e-08, 1.0000001, 7.4505806e-08, -1.7881393e-07, -7.450581e-09, 1, 0, 0, 0)
+bone_name = "DEF-hand.L"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone LeftUpperArm" unique_id=1570729745]
-transform = Transform3D(1, -8.526513e-13, 5.4569682e-11, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-hand_L" unique_id=1226670054]
+transform = Transform3D(1, 2.98024e-08, -1.4901212e-07, -2.9802408e-08, 1, -3.7253148e-08, 1.4901212e-07, 3.725315e-08, 1, -1.1920929e-07, 0.07249719, -5.9604645e-08)
+shape = SubResource("CapsuleShape3D_lsyt0")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Physical Bone DEF-upper_arm_R" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1575579191]
+transform = Transform3D(-0.016014185, -0.055091668, 0.9983529, 0.9091545, 0.41476986, 0.03747145, -0.41615102, 0.90825707, 0.043444633, -0.33295423, 1.4499823, -0.07366602)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9730996e-08, 2.2376216e-07, 0.15691842)
+body_offset = Transform3D(0.99999994, -2.9802322e-08, 5.7183206e-07, 5.662441e-07, 8.419156e-07, -1, 0, 0.99999976, 8.530915e-07, 0, 0.15691842, -3.5762787e-07)
+bone_name = "DEF-upper_arm.R"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-upper_arm_R" unique_id=1622092020]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_oqywh")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone LeftLowerArm" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=473178993]
-transform = Transform3D(0, 0.017238947, -0.99985147, 1, 4.283121e-06, 7.384747e-08, 4.2837573e-06, -0.99985147, -0.017238947, 0.60260004, 1.4408001, -0.06775013)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0066905e-08, -4.656613e-10, 0.13632028)
-body_offset = Transform3D(-1, -4.283121e-06, -7.384747e-08, 0, 0.017238947, -0.99985147, 4.2837573e-06, -0.99985147, -0.017238947, 0, 0.13630003, 0.0023500174)
-mass = 1.6
-bone_name = "LeftLowerArm"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-handl_r" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=837118599]
+transform = Transform3D(-0.13764107, -0.9901283, 0.026477199, 0.9019545, -0.11424754, 0.4164441, -0.4093081, 0.08120105, 0.9087757, -0.7183133, 1.4564338, -0.044742953)
+body_offset = Transform3D(1, 7.0780516e-08, 8.940697e-08, -1.0803342e-07, 1.0000002, -1.0430813e-07, -8.940697e-08, 7.450581e-09, 1.0000002, 0, 0, 0)
+bone_name = "DEF-hand.R"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone LeftLowerArm" unique_id=1259023232]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-handl_r" unique_id=14485670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.072, 0)
+shape = SubResource("CapsuleShape3D_c3h8k")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Physical Bone DEF-forearm_R" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=596548990]
+transform = Transform3D(-0.016013307, 0.16231316, 0.98660934, 0.9091544, 0.41304755, -0.05319682, -0.4161511, 0.8961284, -0.15418199, -0.60396564, 1.450265, -0.062610276)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.847512e-06, -7.6449743e-07, 0.1159036)
+body_offset = Transform3D(1.0000001, 5.9604645e-08, -2.8312206e-07, -2.9057264e-07, -1.4901161e-07, -1.0000001, -5.9604645e-08, 1.0000001, -8.940697e-08, -3.8146973e-06, 0.115903616, 7.748604e-07)
+bone_name = "DEF-forearm.R"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-forearm_R" unique_id=1128928468]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_sutpr")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone RightShoulder" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=221328497]
-transform = Transform3D(0, -0.6229982, 0.78222334, 0.99227786, 0.097023234, 0.0772737, -0.1240352, 0.7761829, 0.61818725, -0.10534999, 1.4493501, 0.0029998422)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1175871e-08, -5.646143e-09, 0.110646136)
-body_offset = Transform3D(0.1240352, -0.7761829, -0.61818725, 0, 0.6229982, -0.78222334, 0.99227786, 0.097023234, 0.0772737, 0.068400025, 0.08654999, -0.008550048)
-bone_name = "RightShoulder"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone Hips" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=535929332]
+transform = Transform3D(-1, 0, 0, 0, 0.24963972, -0.9683388, 0, -0.9683388, -0.24963972, 0, 0.9854379, -0.032920673)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5879354e-09, 0.06921507)
+body_offset = Transform3D(-1, 0, 0, 0, 0.24963972, -0.9683388, 0, -0.9683388, -0.24963972, 0, 0.067023635, 0.017278835)
+bone_name = "Hips"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone RightShoulder" unique_id=1316206410]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone Hips" unique_id=617864383]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 0, 0, -0.03188798, -0.030368388)
+shape = SubResource("CapsuleShape3D_tf2tk")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Physical Bone DEF-spine_001" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=523023169]
+transform = Transform3D(1, 0, 0, 0, -0.12295375, -0.9924124, 0, 0.9924124, -0.12295375, 0, 1.1141202, -0.008002495)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1981417e-07, 0.0621301)
+body_offset = Transform3D(1, 0, 0, 0, -5.9604645e-08, -0.9999999, 0, 1, -5.9604645e-08, 0, 0.062130094, 2.2351742e-07)
+bone_name = "DEF-spine.001"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-spine_001" unique_id=254376274]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 0, 0, 0.023247309, -0.0028802156)
 shape = SubResource("CapsuleShape3D_xxx3e")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone RightUpperArm" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=33243954]
-transform = Transform3D(0, -0.017125664, 0.9998534, 1, 3.4943445e-05, 5.985175e-07, -3.494857e-05, 0.9998534, 0.017125664, -0.32909995, 1.4408, -0.06775017)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7080575e-08, 2.0996413e-09, 0.13722011)
-body_offset = Transform3D(-3.494857e-05, 0.9998534, 0.017125664, 0, 0.017125664, -0.9998534, -1, -3.4943445e-05, -5.985175e-07, -0.0023499876, 0.13719998, 1.1920929e-07)
-mass = 2.8
-bone_name = "RightUpperArm"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-spine_002" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1931343618]
+transform = Transform3D(1, 0, 0, 0, 0.031812664, -0.9994939, 0, 0.9994939, 0.031812664, 0, 1.254387, -0.00286603)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.601007e-07, 0.07864904)
+body_offset = Transform3D(1, 0, 0, 0, 2.2351742e-08, -1.0000001, 0, 1.0000002, 5.5879354e-08, 0, 0.078649044, -2.644956e-07)
+bone_name = "DEF-spine.002"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone RightUpperArm" unique_id=786623491]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-spine_002" unique_id=707932539]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 2.6077032e-08, -4.371139e-08, 0.99999624, -0.99999624, 4.371139e-08, 2.6077032e-08, 0, 0.008799687, 0.00028014183)
 shape = SubResource("CapsuleShape3D_tg447")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone RightLowerArm" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1168188665]
-transform = Transform3D(0, -0.01723899, 0.9998514, -1, 6.020091e-06, 1.03795706e-07, -6.0209854e-06, -0.9998514, -0.01723899, -0.6025999, 1.4408, -0.06775013)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4149421e-08, -5.5879354e-09, 0.13632023)
-body_offset = Transform3D(-1, 6.020091e-06, 1.03795706e-07, 0, 0.01723899, -0.9998514, -6.0209854e-06, -0.9998514, -0.01723899, 0, 0.13629997, 0.0023500174)
-mass = 1.6
-bone_name = "RightLowerArm"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-spine_003" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=1875521155]
+transform = Transform3D(1, 2.3841855e-07, 1.9095833e-14, -1.741393e-08, 0.07303942, -0.9973291, -2.3778173e-07, 0.9973291, 0.07303942, -1.407391e-10, 1.4235697, -0.012003845)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40759e-10, -9.0759606e-08, 0.09088838)
+body_offset = Transform3D(1, -1.4210855e-14, -5.3290705e-15, 8.881784e-15, 4.4703484e-08, -1, 0, 1.0000001, 9.685755e-08, -1.4075852e-10, 0.09088838, 8.195639e-08)
+bone_name = "DEF-spine.003"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone RightLowerArm" unique_id=80278599]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-spine_003" unique_id=741810855]
+transform = Transform3D(-4.371139e-08, -1, -4.3711395e-08, 0, -4.3711395e-08, 1, -1, 4.371139e-08, 0, 1.9007018e-13, 0, 0)
 shape = SubResource("CapsuleShape3D_0t1n1")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone LeftUpperLeg" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=321470023]
-transform = Transform3D(-1, -2.6609619e-06, -1.861204e-08, 0, -0.006994307, 0.99997556, -2.6610269e-06, 0.99997556, 0.006994307, 0.089, 0.73195004, 1.1990778e-08)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.725291e-09, -2.3283064e-10, 0.20015492)
-body_offset = Transform3D(1, 2.6609619e-06, 1.861204e-08, 0, 0.006994307, -0.99997556, -2.6610269e-06, 0.99997556, 0.006994307, 0, 0.20015001, -0.0013999447)
-mass = 10.0
-bone_name = "LeftUpperLeg"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-spine_004" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=815828031]
+transform = Transform3D(1, -2.3841935e-07, 1.1723954e-13, -3.192806e-08, -0.13391607, -0.9909927, 2.3627183e-07, 0.9909927, -0.13391607, -3.875893e-15, 1.5311178, -0.016357508)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5527196e-15, -8.037467e-09, 0.017059803)
+body_offset = Transform3D(1, -7.531753e-13, 0, 3.5527137e-15, -3.874302e-07, -1, 7.9580786e-13, 1.0000001, -4.0233135e-07, 3.5527137e-15, 0.017059803, 1.4901161e-08)
+bone_name = "DEF-spine.004"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone LeftUpperLeg" unique_id=1433056148]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_g5m2n")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-spine_004" unique_id=400300002]
+transform = Transform3D(-4.3711324e-08, -0.9999978, -4.3711267e-08, 0, -4.371185e-08, 0.9999978, -0.9999978, 4.3711346e-08, 0, 2.1316282e-14, 0, -0.00999999)
+shape = SubResource("CapsuleShape3D_xne2s")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone LeftLowerLeg" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=2095058246]
-transform = Transform3D(-1, 2.0915748e-07, 1.6806808e-08, 0, -0.08009663, 0.99678713, 2.0983164e-07, 0.99678713, 0.08009663, 0.089, 0.3177501, -0.018599875)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.841488e-09, -1.8626451e-09, 0.21473993)
-body_offset = Transform3D(-1, 2.0915748e-07, 1.6806808e-08, 0, 0.08009663, -0.99678713, -2.0983164e-07, -0.99678713, -0.08009663, -7.450581e-09, 0.21405, 0.017199943)
-mass = 4.65
-bone_name = "LeftLowerLeg"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
+[node name="Physical Bone DEF-spine_006" type="PhysicalBone3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=2079502629]
+transform = Transform3D(1, 1.5140578e-14, 4.2311308e-14, -1.4210855e-14, 0.9997605, -0.021887666, -4.2632564e-14, 0.021887666, 0.9997605, -9.003846e-15, 1.578737, 0.0024524434)
+body_offset = Transform3D(1, 9.297199e-16, 9.915475e-14, -8.4703295e-22, 1.0000002, -2.6077032e-08, 0, 0, 1.0000004, 0, 0, 0)
+bone_name = "DEF-spine.006"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone LeftLowerLeg" unique_id=648448254]
-transform = Transform3D(1, 0, 3.3537617e-12, 0, 0, 1, 0, -1, 0, 0, -3.7252903e-09, -0.045195103)
-shape = SubResource("CapsuleShape3D_ydol4")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterPhysical/rig/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone DEF-spine_006" unique_id=1525543316]
+transform = Transform3D(1, -3.1499038e-19, -3.3203692e-19, -2.1175824e-22, 1, 3.259629e-07, 0, -3.259629e-07, 1, -2.032879e-20, 0.10427225, 3.7252903e-09)
+shape = SubResource("CapsuleShape3D_0c5kw")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="Physical Bone RightUpperLeg" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=65019037]
-transform = Transform3D(-1, 2.6609619e-06, 1.861204e-08, 0, -0.006994307, 0.99997556, 2.6610269e-06, 0.99997556, 0.006994307, -0.08900001, 0.73195004, 1.1990778e-08)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7252894e-09, -2.3283064e-10, 0.20015492)
-body_offset = Transform3D(1, -2.6609619e-06, -1.861204e-08, 0, 0.006994307, -0.99997556, 2.6610269e-06, 0.99997556, 0.006994307, 7.450581e-09, 0.20015001, -0.0013999447)
-mass = 10.0
-bone_name = "RightUpperLeg"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone RightUpperLeg" unique_id=1149630085]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_8qhcd")
-debug_color = Color(1, 1, 1, 1)
-
-[node name="Physical Bone RightLowerLeg" type="PhysicalBone3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D" unique_id=235922612]
-transform = Transform3D(-1, -2.2263389e-07, -1.7889699e-08, 0, -0.08009662, 0.99678713, -2.2335149e-07, 0.99678713, 0.08009662, -0.08900001, 0.31775016, -0.01859987)
-visible = false
-collision_layer = 4
-collision_mask = 13
-joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.841632e-09, 0, 0.21473987)
-body_offset = Transform3D(-1, -2.2263389e-07, -1.7889699e-08, 0, 0.08009662, -0.99678713, 2.2335149e-07, -0.99678713, -0.08009662, 0, 0.21404994, 0.017199937)
-mass = 4.65
-bone_name = "RightLowerLeg"
-joint_constraints/x/linear_limit_enabled = true
-joint_constraints/x/linear_limit_upper = 0.0
-joint_constraints/x/linear_limit_lower = 0.0
-joint_constraints/x/linear_limit_softness = 0.7
-joint_constraints/x/linear_spring_enabled = false
-joint_constraints/x/linear_spring_stiffness = 0.0
-joint_constraints/x/linear_spring_damping = 0.0
-joint_constraints/x/linear_equilibrium_point = 0.0
-joint_constraints/x/linear_restitution = 0.5
-joint_constraints/x/linear_damping = 1.0
-joint_constraints/x/angular_limit_enabled = true
-joint_constraints/x/angular_limit_upper = 49.999992
-joint_constraints/x/angular_limit_lower = -49.999992
-joint_constraints/x/angular_limit_softness = 0.5
-joint_constraints/x/angular_restitution = 0.0
-joint_constraints/x/angular_damping = 1.0
-joint_constraints/x/erp = 0.5
-joint_constraints/x/angular_spring_enabled = false
-joint_constraints/x/angular_spring_stiffness = 0.0
-joint_constraints/x/angular_spring_damping = 0.0
-joint_constraints/x/angular_equilibrium_point = 0.0
-joint_constraints/y/linear_limit_enabled = true
-joint_constraints/y/linear_limit_upper = 0.0
-joint_constraints/y/linear_limit_lower = 0.0
-joint_constraints/y/linear_limit_softness = 0.7
-joint_constraints/y/linear_spring_enabled = false
-joint_constraints/y/linear_spring_stiffness = 0.0
-joint_constraints/y/linear_spring_damping = 0.0
-joint_constraints/y/linear_equilibrium_point = 0.0
-joint_constraints/y/linear_restitution = 0.5
-joint_constraints/y/linear_damping = 1.0
-joint_constraints/y/angular_limit_enabled = true
-joint_constraints/y/angular_limit_upper = 9.999998
-joint_constraints/y/angular_limit_lower = -9.999998
-joint_constraints/y/angular_limit_softness = 0.5
-joint_constraints/y/angular_restitution = 0.0
-joint_constraints/y/angular_damping = 1.0
-joint_constraints/y/erp = 0.5
-joint_constraints/y/angular_spring_enabled = false
-joint_constraints/y/angular_spring_stiffness = 0.0
-joint_constraints/y/angular_spring_damping = 0.0
-joint_constraints/y/angular_equilibrium_point = 0.0
-joint_constraints/z/linear_limit_enabled = true
-joint_constraints/z/linear_limit_upper = 0.0
-joint_constraints/z/linear_limit_lower = 0.0
-joint_constraints/z/linear_limit_softness = 0.7
-joint_constraints/z/linear_spring_enabled = false
-joint_constraints/z/linear_spring_stiffness = 0.0
-joint_constraints/z/linear_spring_damping = 0.0
-joint_constraints/z/linear_equilibrium_point = 0.0
-joint_constraints/z/linear_restitution = 0.5
-joint_constraints/z/linear_damping = 1.0
-joint_constraints/z/angular_limit_enabled = true
-joint_constraints/z/angular_limit_upper = 9.999998
-joint_constraints/z/angular_limit_lower = -9.999998
-joint_constraints/z/angular_limit_softness = 0.5
-joint_constraints/z/angular_restitution = 0.0
-joint_constraints/z/angular_damping = 1.0
-joint_constraints/z/erp = 0.5
-joint_constraints/z/angular_spring_enabled = false
-joint_constraints/z/angular_spring_stiffness = 0.0
-joint_constraints/z/angular_spring_damping = 0.0
-joint_constraints/z/angular_equilibrium_point = 0.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UAL_Physical/Armature/GeneralSkeleton/PhysicalBoneSimulator3D/Physical Bone RightLowerLeg" unique_id=2119372476]
-transform = Transform3D(1, 7.993606e-14, 0, 0, 0, 1, 0, -1, 0, 0, 0, -0.045195132)
-shape = SubResource("CapsuleShape3D_p0ax3")
-debug_color = Color(1, 1, 1, 1)
-
-[editable path="CharacterBody3D/UAL_Animation"]
-[editable path="UAL_Physical"]
+[editable path="CharacterBody3D/CharacterVisual"]
+[editable path="CharacterPhysical"]
