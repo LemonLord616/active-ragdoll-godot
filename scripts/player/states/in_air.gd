@@ -8,7 +8,7 @@ func _setup() -> void:
 	player = agent as Player
 
 func _enter() -> void:
-	player.anim_player.play(&"Jump")
+	player.anim_player.play(&"Walk")
 
 func _update(_delta: float) -> void:
 	player.motor.set_input_vector(player.device.input_vector())

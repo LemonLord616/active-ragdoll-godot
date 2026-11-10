@@ -1,4 +1,5 @@
 extends Node
+class_name AnimationController
 
 
 @export var player: Player
@@ -6,8 +7,7 @@ extends Node
 @onready var anim_player := player.anim_player
 
 @export var animation_speeds: Dictionary[StringName, float] = {
-	&"Walk": 1.418,
-	&"Run": 6.0,
+	&"Walk": 2.7,
 }
 
 func _physics_process(_delta: float) -> void:
@@ -16,5 +16,7 @@ func _physics_process(_delta: float) -> void:
 		var vel := motor.velocity
 		vel.y = 0.0
 		var current_speed := vel.length()
+		if is_zero_approx(current_speed):
+			return
 		anim_player.speed_scale = current_speed / anim_speed
 

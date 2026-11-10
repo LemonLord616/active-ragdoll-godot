@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bdbu7r0jq6fu6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88rjk"]
-albedo_color = Color(1, 0.64705884, 0.5529412, 1)
+albedo_color = Color(0.999999, 0.37066036, 0.10278057, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvdge"]
 
@@ -304,12 +304,14 @@ bones/21/rotation = Quaternion(0, -0.70710677, 0, 0.70710677)
 bones/21/scale = Vector3(1, 1, 1)
 
 [node name="Dude" type="MeshInstance3D" parent="." unique_id=2047610945]
+layers = 17
 material_override = SubResource("StandardMaterial3D_88rjk")
 mesh = SubResource("ArrayMesh_lox1e")
 skin = SubResource("Skin_18oif")
 skeleton = NodePath("..")
 
 [node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="." unique_id=2108676303]
+visible = false
 
 [node name="Physical Bone Hips" type="PhysicalBone3D" parent="PhysicalBoneSimulator3D" unique_id=901807403]
 transform = Transform3D(1, -1.10989614e-13, 1.2245211e-13, 0, 0.7409346, 0.6715772, -1.6526709e-13, -0.6715772, 0.7409346, -4.268327e-15, 0.97659075, -0.025826842)
@@ -332,17 +334,20 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(-0.99049145, -0.1374322, -0.0062542637, 0, -0.04546094, 0.99896616, -0.13757443, 0.9894674, 0.045028675, 0.09954662, 0.7671365, 0.011663037)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9790605e-09, 9.313226e-10, 0.22005533)
+joint_type = 2
+joint_offset = Transform3D(-2.8870994e-08, 0.13757443, -0.9904914, 0.045461014, -0.9894673, -0.1374322, -0.9989659, -0.045028754, -0.006254246, 1.9790605e-09, 9.313226e-10, 0.22005533)
+joint_rotation = Vector3(0.13786857, -1.5771105, 3.09568)
 body_offset = Transform3D(0.99049145, 0.1374322, 0.0062542637, 0, 0.04546094, -0.99896616, -0.13757443, 0.9894674, 0.045028675, -0.0013762861, 0.21982783, -0.0099088)
 mass = 8.0
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "LeftUpperLeg"
+joint_constraints/swing_span = 60.0
+joint_constraints/twist_span = 24.999996
 joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone LeftUpperLeg" unique_id=1303116173]
 transform = Transform3D(1, 1.8626451e-09, 1.4901161e-08, 3.8163916e-17, -2.980233e-08, 0.9999985, -1.0710209e-08, -0.99999726, 2.6077023e-08, 0, 0, 0)
@@ -353,17 +358,21 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(-0.9999167, -0.012871899, -0.0009871463, 0, -0.07646549, 0.9970723, -0.0129096955, 0.99698913, 0.076459125, 0.10116906, 0.29867202, -0.017312126)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.717126e-09, 1.8626451e-09, 0.24936672)
+joint_type = 3
+joint_offset = Transform3D(-0.012909696, -1.885928e-08, 0.9999166, 0.9969891, -0.076465525, 0.012871899, 0.07645915, 0.9970721, 0.0009871655, -1.717126e-09, 1.8626451e-09, 0.24936672)
+joint_rotation = Vector3(-0.012872255, 1.5698091, 1.6473429)
 body_offset = Transform3D(-0.9999167, -0.012871899, -0.0009871463, 0, 0.07646549, -0.9970723, 0.0129096955, -0.99698913, -0.076459125, 0.00024615973, 0.24863666, 0.019066364)
 mass = 4.0
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "LeftLowerLeg"
-joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 135.0
+joint_constraints/angular_limit_lower = -4.999999
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone LeftLowerLeg" unique_id=276544544]
 transform = Transform3D(0.99999994, 0, 9.313226e-10, 0, 7.450581e-09, 0.99999994, -1.1641532e-10, -0.99999994, 0, 0, 0, 0)
@@ -374,17 +383,20 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(-0.990492, 0.13742833, 0.0062540728, 0, -0.045460835, 0.99896616, 0.13757056, 0.9894679, 0.045028593, -0.099546514, 0.7671365, 0.011663062)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9849193e-10, 1.8626451e-09, 0.22005534)
+joint_type = 2
+joint_offset = Transform3D(2.5145706e-08, -0.13757055, -0.9904919, 0.04546081, -0.98946786, 0.13742833, -0.998966, -0.04502857, 0.0062540444, 6.9849193e-10, 1.8626451e-09, 0.22005534)
+joint_rotation = Vector3(-0.13786465, -1.5644823, 3.0956802)
 body_offset = Transform3D(0.990492, -0.13742833, -0.0062540728, 0, 0.045460835, -0.99896616, 0.13757056, 0.9894679, 0.045028593, 0.0013762414, 0.21982783, -0.009908783)
 mass = 8.0
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "RightUpperLeg"
+joint_constraints/swing_span = 60.0
+joint_constraints/twist_span = 24.999996
 joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone RightUpperLeg" unique_id=695024443]
 transform = Transform3D(1, 4.656613e-10, 0, 0, 0, 0.99999994, 4.656613e-10, -0.99999994, 3.7252903e-09, 0, 0, 0)
@@ -395,17 +407,21 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(-0.99991673, 0.012868859, 0.0009869122, 0, -0.07646543, 0.9970723, 0.012906646, 0.9969892, 0.07645906, -0.101168856, 0.29867196, -0.017312074)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0267984e-09, 0, 0.24936679)
+joint_type = 3
+joint_offset = Transform3D(0.0129066445, -1.6530974e-08, 0.9999167, 0.99698913, -0.076465406, -0.012868858, 0.076459035, 0.99707216, -0.0009868954, 3.0267984e-09, 0, 0.24936679)
+joint_rotation = Vector3(0.012869215, 1.5717833, 1.6473428)
 body_offset = Transform3D(-0.99991673, 0.012868859, 0.0009869122, 0, 0.07646543, -0.9970723, -0.012906646, -0.9969892, -0.07645906, -0.00024610013, 0.24863672, 0.019066352)
 mass = 4.0
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "RightLowerLeg"
-joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 135.0
+joint_constraints/angular_limit_lower = -4.999999
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone RightLowerLeg" unique_id=1365610479]
 transform = Transform3D(1, 0, -9.313226e-10, 9.313226e-10, 0, 0.99999994, -1.1641532e-10, -0.99999994, 0, 0, 0, 0)
@@ -416,17 +432,20 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(-1, 1.3240334e-13, 3.191259e-14, 0, 0.23431556, -0.9721606, -1.3619493e-13, -0.9721606, -0.23431556, -1.30732835e-14, 1.0913819, -0.018343855)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2351647e-22, 0, 0.14215799)
+joint_type = 2
+joint_offset = Transform3D(-4.2494456e-08, 1.0242387e-08, 1, 0.23431556, 0.9721606, -1.3240334e-13, -0.9721606, 0.23431556, -4.371139e-08, -4.2351647e-22, 0, 0.14215799)
+joint_rotation = Vector3(1.3240334e-13, 1.5707964, 0.23651446)
 body_offset = Transform3D(-1, 1.3240334e-13, 3.191259e-14, 0, 0.23431556, -0.9721606, -1.3619493e-13, -0.9721606, -0.23431556, -4.5366297e-15, 0.1382004, 0.03330983)
 mass = 10.0
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "Spine"
+joint_constraints/swing_span = 19.999996
+joint_constraints/twist_span = 15.0
 joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone Spine" unique_id=310868668]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.3711346e-08, 1, -1, 4.371139e-08, 0, -4.718216e-15, -0.01482898, -0.08632374)
@@ -437,17 +456,20 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(1, 2.1678254e-13, 4.2879684e-14, 0, 0.19404095, -0.98099345, -2.2098266e-13, 0.98099345, 0.19404095, -2.3653666e-14, 1.3678502, -0.012383472)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2351647e-22, -1.8626451e-09, 0.14094679)
+joint_type = 2
+joint_offset = Transform3D(4.2880544e-08, 8.482012e-09, -1, 0.19404097, -0.98099345, -2.1678254e-13, -0.98099345, -0.19404097, -4.371139e-08, -4.2351647e-22, -1.8626451e-09, 0.14094679)
+joint_rotation = Vector3(2.1678254e-13, -1.5707964, 2.946313)
 body_offset = Transform3D(1, 2.1678254e-13, 4.2879684e-14, 0, 0.19404095, -0.98099345, -2.2098266e-13, 0.98099345, 0.19404095, -6.043753e-15, 0.13826787, -0.027349446)
 mass = 16.0
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "Chest"
+joint_constraints/swing_span = 15.0
+joint_constraints/twist_span = 15.0
 joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone Chest" unique_id=515851106]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -3.3881318e-21, 0, -0.0078125)
@@ -458,17 +480,20 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(0, 0.051612347, -0.9986672, -0.8682409, 0.49548167, 0.0256071, 0.49614295, 0.86708367, 0.044811945, 0.34038466, 1.4478321, -0.079093955)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.142042e-08, 1.2572855e-08, 0.14331777)
+joint_type = 2
+joint_offset = Transform3D(5.2154064e-08, -0.86824083, 0.49614292, 0.051612347, 0.49548164, 0.86708367, -0.9986672, 0.025607055, 0.044811975, -2.142042e-08, 1.2572855e-08, 0.14331777)
+joint_rotation = Vector3(-1.049318, 1.48072, 0.10379169)
 body_offset = Transform3D(-0.49614295, -0.86708367, -0.04481195, 0, 0.051612347, -0.9986672, 0.8682409, -0.49548167, -0.025607102, 0.0064223483, 0.14312674, 0.0036699772)
 mass = 2.5
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "LeftUpperArm"
+joint_constraints/swing_span = 99.999985
+joint_constraints/twist_span = 45.0
 joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone LeftUpperArm" unique_id=525902074]
 transform = Transform3D(1, -1.3038516e-08, 0, 0, -1.3038516e-08, 1, 0, -1.0000001, -9.313226e-10, 0, 0, 0)
@@ -479,17 +504,21 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(0, 0.19098756, -0.9815925, 0.9647638, -0.25827414, -0.050252166, -0.2631175, -0.9470049, -0.18425788, 0.617922, 1.4510432, -0.06028565)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7008355e-08, 1.3038516e-08, 0.13693121)
+joint_type = 3
+joint_offset = Transform3D(3.72529e-09, 0.26311746, 0.9647637, 0.19098754, 0.9470048, -0.2582741, -0.9815924, 0.18425786, -0.05025216, -2.7008355e-08, 1.3038516e-08, 0.13693121)
+joint_rotation = Vector3(0.2612353, 1.6228368, 0.19900598)
 body_offset = Transform3D(-0.9647638, 0.25827414, 0.050252166, 0, 0.19098756, -0.9815925, -0.2631175, -0.9470049, -0.18425788, -0.006881118, 0.13441062, 0.025230654)
 mass = 1.5
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "LeftLowerArm"
-joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 139.99998
+joint_constraints/angular_limit_lower = -4.999999
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone LeftLowerArm" unique_id=1009074655]
 transform = Transform3D(0.9999991, -4.8428774e-08, 8.940697e-08, 1.9371508e-07, 2.9802322e-08, 1, 2.9802326e-08, -1.0000001, 0, 0, 0, 0)
@@ -500,16 +529,19 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(-1, -4.4703136e-13, -2.3967452e-13, 0, 0.47251773, -0.8813212, 5.0722864e-13, -0.8813212, -0.47251773, -2.025605e-14, 1.5408355, -0.021119285)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4703295e-22, -1.4901161e-08, 0.03939249)
+joint_type = 2
+joint_offset = Transform3D(-3.8523982e-08, 2.0654012e-08, 1, 0.47251773, 0.8813212, 4.4703136e-13, -0.8813212, 0.47251773, -4.371139e-08, 8.4703295e-22, -1.4901161e-08, 0.03939249)
+joint_rotation = Vector3(-4.4703136e-13, 1.5707964, 0.49214536)
 body_offset = Transform3D(-1, -4.4703136e-13, -2.3967452e-13, 0, 0.47251773, -0.8813212, 5.0722864e-13, -0.8813212, -0.47251773, 9.44137e-15, 0.03471744, 0.018613636)
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "Neck"
+joint_constraints/swing_span = 15.0
+joint_constraints/twist_span = 9.999998
 joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone Neck" unique_id=1451002544]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -520,17 +552,20 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(0, -0.051612347, 0.9986672, 0.8682409, 0.49548167, 0.0256071, -0.49614295, 0.86708367, 0.044811945, -0.34038466, 1.4478321, -0.079093955)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.142042e-08, 1.2572855e-08, 0.14331777)
+joint_type = 2
+joint_offset = Transform3D(-2.2351742e-08, 0.86824083, 0.49614292, 0.051612347, 0.49548164, -0.86708367, -0.9986672, 0.025607085, -0.04481196, 2.142042e-08, 1.2572855e-08, 0.14331777)
+joint_rotation = Vector3(1.049318, 1.6608726, 0.10379169)
 body_offset = Transform3D(-0.49614295, 0.86708367, 0.04481195, 0, 0.051612347, -0.9986672, -0.8682409, -0.49548167, -0.025607102, -0.0064223483, 0.14312674, 0.0036699772)
 mass = 2.5
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "RightUpperArm"
+joint_constraints/swing_span = 99.999985
+joint_constraints/twist_span = 45.0
 joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone RightUpperArm" unique_id=1826306406]
 transform = Transform3D(1, 0, 0, 0, 1.8626451e-09, 1, 0, -1.0000001, -9.313226e-10, 0, 0, 0)
@@ -541,17 +576,21 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(0, -0.19098756, 0.9815925, -0.9647638, -0.25827414, -0.050252166, 0.2631175, -0.9470049, -0.18425788, -0.617922, 1.4510432, -0.06028565)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7008355e-08, 1.3038516e-08, 0.13693121)
+joint_type = 3
+joint_offset = Transform3D(2.980232e-08, -0.26311746, 0.9647637, 0.19098754, 0.9470048, 0.2582741, -0.9815924, 0.18425785, 0.050252188, 2.7008355e-08, 1.3038516e-08, 0.13693121)
+joint_rotation = Vector3(-0.2612353, 1.5187558, 0.19900598)
 body_offset = Transform3D(-0.9647638, -0.25827414, -0.050252166, 0, 0.19098756, -0.9815925, 0.2631175, -0.9470049, -0.18425788, 0.006881118, 0.13441062, 0.025230654)
 mass = 1.5
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "RightLowerArm"
-joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 139.99998
+joint_constraints/angular_limit_lower = -4.999999
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone RightLowerArm" unique_id=378678110]
 transform = Transform3D(1, 3.7252903e-09, -1.4901161e-08, -1.4901161e-08, 0, 1, 0, -1.0000001, 0, 0, 0, 0)
@@ -562,15 +601,19 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08146795e-14, 1.5755529, -0.0025056489)
 collision_layer = 4
 collision_mask = 9
-joint_type = 1
+joint_type = 2
+joint_offset = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 0, 0)
+joint_rotation = Vector3(0, -1.5707964, 1.5707964)
 mass = 5.0
 friction = 0.7
 linear_damp = 0.1
 angular_damp = 0.5
 bone_name = "Head"
+joint_constraints/swing_span = 24.999996
+joint_constraints/twist_span = 30.0
 joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalBoneSimulator3D/Physical Bone Head" unique_id=511466211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09938586, 0.009955928)

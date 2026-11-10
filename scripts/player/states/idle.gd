@@ -8,4 +8,4 @@ func _setup() -> void:
 	player = agent as Player
 
 func _enter() -> void:
-	player.anim_player.play(&"Idle")
+	player.anim_player.play(&"Walk")
