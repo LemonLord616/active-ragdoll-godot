@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dn6nmcp8ciwib"]
+
+[ext_resource type="Script" uid="uid://cnia2m0onktsd" path="res://scenes/player_test.gd" id="1_a7wdi"]
+[ext_resource type="Material" uid="uid://drbvb3j3yeh52" path="res://resources/materials/prototype_dark.tres" id="2_ia3p5"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_rc422"]
+[ext_resource type="PackedScene" uid="uid://bdbu7r0jq6fu6" path="res://scenes/prefabs/ragdoll.tscn" id="5_a7wdi"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_q7576"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_tadfq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4fwf8"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_dxymg"]
+sky_material = SubResource("ProceduralSkyMaterial_4fwf8")
+
+[sub_resource type="Environment" id="Environment_k3741"]
+background_mode = 2
+sky = SubResource("Sky_dxymg")
+
+[sub_resource type="Resource" id="Resource_ged13"]
+script = ExtResource("5_q7576")
+
+[node name="RagdollTest" type="Node3D" unique_id=342403452 node_paths=PackedStringArray("sim")]
+script = ExtResource("1_a7wdi")
+sim = NodePath("Ragdoll/PhysicalBoneSimulator3D")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=332315190]
+environment = SubResource("Environment_k3741")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=192197243]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1402657562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032592773, -0.25811768, -0.18270874)
+use_collision = true
+size = Vector3(4.253662, 0.48376465, 4.158142)
+material = ExtResource("2_ia3p5")
+
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1522175567 node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.8046417, -0.30380273, 0.5101524, -1.4901161e-08, 0.85918885, 0.5116585, -0.59376067, -0.4117019, 0.691339, 1.6073692, 1.6121145, 2.1782453)
+script = ExtResource("4_rc422")
+look_at_mode = 2
+look_at_target = NodePath("../Ragdoll/PhysicalBoneSimulator3D")
+tween_resource = SubResource("Resource_ged13")
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Ragdoll" parent="." unique_id=828417226 instance=ExtResource("5_a7wdi")]
+
+[node name="Physical Bone LeftUpperArm" parent="Ragdoll/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(828417226, 2108676303) index="7" unique_id=556219471]
+transform = Transform3D(0, 0.051612347, -0.9986672, -0.8682409, 0.49548167, 0.025607102, 0.49614295, 0.86708367, 0.04481195, 0.34038466, 1.4478321, -0.079093955)
+body_offset = Transform3D(-0.49614295, -0.86708367, -0.044811945, 0, 0.051612347, -0.9986672, 0.8682409, -0.49548167, -0.0256071, 0.0064223483, 0.14312674, 0.0036699772)
+
+[node name="Physical Bone RightUpperArm" parent="Ragdoll/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(828417226, 2108676303) index="10" unique_id=1667148797]
+transform = Transform3D(0, -0.051612347, 0.9986672, 0.8682409, 0.49548167, 0.025607102, -0.49614295, 0.86708367, 0.04481195, -0.34038466, 1.4478321, -0.079093955)
+body_offset = Transform3D(-0.49614295, 0.86708367, 0.044811945, 0, 0.051612347, -0.9986672, -0.8682409, -0.49548167, -0.0256071, -0.0064223483, 0.14312674, 0.0036699772)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2086375701]
+transform = Transform3D(0.8046417, -0.30380276, 0.5101525, -2.9802322e-08, 0.85918885, 0.51165867, -0.59376067, -0.4117019, 0.69133914, 1.6073692, 1.6121145, 2.1782453)
+top_level = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=999836990]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("6_tadfq")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[editable path="Ragdoll"]
