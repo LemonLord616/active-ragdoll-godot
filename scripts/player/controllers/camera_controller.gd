@@ -9,6 +9,8 @@ class_name CameraController
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# var rot := player.camera.get_third_person_rotation_degrees()
+	# player.target_skeleton.global_rotation.y = PI + deg_to_rad(rot.y)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -27,4 +29,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		player.camera.set_third_person_rotation_degrees(rot)
 
-		player.target_skeleton.global_rotation.y = PI + deg_to_rad(rot.y)
+		player.anim_skeleton.global_rotation.y = PI + deg_to_rad(rot.y)

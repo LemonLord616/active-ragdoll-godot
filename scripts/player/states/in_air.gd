@@ -10,5 +10,5 @@ func _setup() -> void:
 func _enter() -> void:
 	player.anim_player.play(&"Walk")
 
-func _update(_delta: float) -> void:
-	player.motor.set_input_vector(player.device.input_vector())
+func _update(delta: float) -> void:
+	player.motor.move(player.device.input_vector(), delta)

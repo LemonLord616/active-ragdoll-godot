@@ -67,8 +67,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.014872738, 0.014872738)
-shader_parameter/cirrus_position2 = Vector2(0.014872738, 0.014872738)
+shader_parameter/cirrus_position1 = Vector2(0.011997209, 0.011997209)
+shader_parameter/cirrus_position2 = Vector2(0.011997209, 0.011997209)
 shader_parameter/cirrus_texture = ExtResource("8_muem4")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -78,7 +78,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(0.07436392, 0.07436392)
+shader_parameter/cumulus_position = Vector2(0.059985895, 0.059985895)
 shader_parameter/cumulus_texture = ExtResource("9_dp3eg")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -108,7 +108,7 @@ tonemap_white = 6.0
 [node name="Node3D" type="Node3D" unique_id=512579956]
 
 [node name="Player" parent="." unique_id=83343701 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 59, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49999857, 0)
 
 [node name="boxes" type="Node3D" parent="." unique_id=1162643227]
 

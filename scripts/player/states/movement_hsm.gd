@@ -14,7 +14,8 @@ func _ready() -> void:
 
 
 func _update(_delta: float) -> void:
-	if player.motor.is_on_floor():
-		dispatch(&"to_ground")
-	else:
-		dispatch(&"to_air")
+	dispatch(&"to_ground")
+	# if player.motor.is_on_floor():
+	# 	dispatch(&"to_ground")
+	# else:
+	# 	dispatch(&"to_air")
