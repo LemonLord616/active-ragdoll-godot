@@ -1,14 +1,1 @@
-@icon("res://addons/at-icons/animation/wing.svg")
 extends LimboState
-
-
-var player: Player
-
-func _setup() -> void:
-	player = agent as Player
-
-func _enter() -> void:
-	player.anim_player.play(&"Walk")
-
-func _update(delta: float) -> void:
-	player.motor.move(player.device.input_vector(), delta)

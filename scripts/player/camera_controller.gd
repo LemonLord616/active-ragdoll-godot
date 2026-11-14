@@ -1,4 +1,3 @@
-
 extends Node
 class_name CameraController
 
@@ -9,8 +8,14 @@ class_name CameraController
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	# var rot := player.camera.get_third_person_rotation_degrees()
-	# player.target_skeleton.global_rotation.y = PI + deg_to_rad(rot.y)
+	_face_forward()
+
+func _face_forward() -> void:
+	var up := player.ragdoll.get_up_direction()
+	var forward := -player.camera.global_basis.z.slide(up)
+	if not forward.is_zero_approx():
+		# The character's front is +Z; point it along the camera's viewing direction.
+		player.anim_skeleton.look_at(player.anim_skeleton.global_position + forward, up, true)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -29,4 +34,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		player.camera.set_third_person_rotation_degrees(rot)
 
-		player.anim_skeleton.global_rotation.y = PI + deg_to_rad(rot.y)
+		_face_forward()
